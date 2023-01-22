@@ -123,7 +123,7 @@ const DataTable = ({
 			img: "http://dummyimage.com/202x100.png/5fa2dd/ffffff",
 		}
 		
-		postData('http://localhost:5000/data', user)
+		postData('https://assignment-techwondoe.onrender.com/data', user)
 		.then((data) => {
 			handleEdit(user)
 			editModal?.current?.close()

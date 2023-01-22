@@ -21,7 +21,7 @@ function AllUsers() {
 
     const [resData, setResData] = useState<Array<UserType>>([]);
     const { isLoading, error, data } = useQuery("repoData", () =>
-        fetch("http://localhost:5000/data")
+        fetch("https://assignment-techwondoe.onrender.com/data")
             .then((res) => res.json())
             .then((data) => setResData(data.data))
     );
@@ -112,7 +112,7 @@ function AllUsers() {
             img: "http://dummyimage.com/202x100.png/5fa2dd/ffffff",
         }
         
-        postData('http://localhost:5000/data', user)
+        postData('https://assignment-techwondoe.onrender.com/data', user)
         .then((data) => {
             user.id=data.id
             setResData([user, ...resData]);
@@ -143,7 +143,7 @@ function AllUsers() {
                 <div className="flex gap-3">
                     <Button isBlue={false}>
                         <CloudDownloadOutlinedIcon />
-                        {/* <CSVLink data={resData}>Download CSV</CSVLink> */}
+                        <CSVLink data={resData}>Download CSV</CSVLink>
                     </Button>
                     <div className="m-auto" onClick={handleOpenAddModal}>
                         <Button isBlue={true}>

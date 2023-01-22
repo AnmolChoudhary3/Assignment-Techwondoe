@@ -27,7 +27,7 @@ const DeleteModal:React.FC<{deleteModal: React.RefObject<HTMLDialogElement>, han
 		};
 		console.log(target?.Id.value);
         
-		postData('http://localhost:5000/data', {id: target?.Id.value})
+		postData('https://assignment-techwondoe.onrender.com/data', {id: target?.Id.value})
 		.then((data) => {
 			handleDelete(target?.Id.value)
 			deleteModal?.current?.close()
