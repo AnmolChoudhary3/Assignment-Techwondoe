@@ -25,7 +25,6 @@ const DeleteModal:React.FC<{deleteModal: React.RefObject<HTMLDialogElement>, han
 		const target = e.target as typeof e.target & {
 			Id: { value: string };
 		};
-		console.log(target?.Id.value);
         
 		postData('https://assignment-techwondoe.onrender.com/data', {id: target?.Id.value})
 		.then((data) => {
@@ -37,12 +36,14 @@ const DeleteModal:React.FC<{deleteModal: React.RefObject<HTMLDialogElement>, han
 
 
   return (
-    <dialog ref={deleteModal}>
-        <form onSubmit={deleteUser}>
+    <dialog ref={deleteModal} className="rounded-xl p-10">
+        <form onSubmit={deleteUser} className="grid place-content-center gap-3">
             <input id="Id" name="Id" type="text" className="hidden"/>
             <p>Click on confirm to delete the user</p>
-            <button type='submit'>Confirm</button>
-            <button onClick={()=> deleteModal?.current?.close()}>Cancel</button>
+            <div className="w-full flex justify-around">
+                <button className="bg-blue-600 rounded text-white p-2 px-4 col-span-2" type='submit'>Confirm</button>
+                <div className="cursor-pointer bg-gray-300 rounded text-black p-2 px-4 col-span-2 " onClick={()=> deleteModal?.current?.close()}>Cancel</div>
+            </div>
         </form>
     </dialog>
   )

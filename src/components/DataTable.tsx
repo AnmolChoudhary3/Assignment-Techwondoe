@@ -146,7 +146,7 @@ const DataTable = ({
                                     // Apply the header cell props
                                     column.Header !== "disabled" ? (
                                         <th
-                                            className="text-center p-3 text-gray-700"
+                                            className="text-left p-3 text-gray-700"
                                             {...column.getHeaderProps(
                                                 column.getSortByToggleProps()
                                             )}
@@ -231,15 +231,17 @@ const DataTable = ({
                                                         ) : cell.column
                                                               .Header ===
                                                           "Last Login" ? (
-                                                            <p
+                                                            <div
                                                                 key={
                                                                     cell.row
                                                                         .values
                                                                         .id
                                                                 }
+																className="text-left"
                                                             >
-                                                                {cell.value}
-                                                            </p>
+                                                                <p>{new Date(parseInt(cell.value)).toDateString().slice(4)}</p>
+                                                                <p className="opacity-50 ">{new Date(parseInt(cell.value)).toLocaleTimeString().slice(0,-6)} {new Date(parseInt(cell.value)).toLocaleTimeString().slice(-2)}</p>
+                                                            </div>
                                                         ) : cell.column
                                                               .Header ===
                                                           "Role" ? (
@@ -249,6 +251,7 @@ const DataTable = ({
                                                                         .values
                                                                         .id
                                                                 }
+																className="opacity-50 text-left"
                                                             >
                                                                 {cell.value}
                                                             </p>
@@ -264,7 +267,7 @@ const DataTable = ({
                                                                     }
                                                                 >
                                                                     <FiberManualRecordIcon
-                                                                        className="self-center"
+                                                                        // className="self-center"
                                                                         fontSize="small"
                                                                     />{" "}
                                                                     <p>
@@ -283,7 +286,7 @@ const DataTable = ({
                                                                     }
                                                                 >
                                                                     <FiberManualRecordIcon
-                                                                        className="self-center"
+                                                                        // className="self-center"
                                                                         fontSize="small"
                                                                     />{" "}
                                                                     <p>
@@ -300,14 +303,14 @@ const DataTable = ({
                                         })
                                     }
 
-                                    <td className="p-2 text-center">
+                                    <td className="p-2 text-center cursor-pointer">
                                         <DeleteRoundedIcon onClick={() =>
                                             handleDeleteClick(row?.original)
                                         }
 										className="opacity-70" />
                                     </td>
                                     <td
-                                        className="p-2 text-center"
+                                        className="p-2 text-center cursor-pointer"
                                         onClick={() =>
                                             handleEditClick(row?.original)
                                         }

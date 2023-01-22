@@ -26,12 +26,6 @@ function AllUsers() {
             .then((data) => setResData(data.data))
     );
 
-	
-
-    // React.useEffect(() => {
-    //   setResData(data?.data)
-    // }, [])
-
     const columns = React.useMemo(
         () => [
             {
